@@ -1,11 +1,11 @@
 package com.example.restapi.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-    @RestController
-    public class HelloRestController {
+@RestController
+@RequestMapping(value = {"/","/hello"})
+
+public class HelloRestController {
         @GetMapping("/hello")
         public String sayHello() {
             return "Hello From BridgeLabz!!!";
@@ -14,4 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
         public String getName(@RequestParam(value = "name",defaultValue = "Shiwani") String name) {
             return "Hello " + name + "!";
         }
-}
+        @GetMapping("/findName/{name}")
+        public String find(@PathVariable String name){
+            return  " Hello " + name + "!!";
+        }
+
+    }
